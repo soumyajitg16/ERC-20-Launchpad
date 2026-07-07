@@ -1,0 +1,13 @@
+node_modules/
+lib/
+out/
+cache/
+broadcast/
+.env
+.env.local
+.next/
+coverage/
+coverage.json
+lcov.info
+.DS_Store
+reports/
