@@ -79,20 +79,23 @@ export default function LaunchForm({ account, setAccount, onTokenLaunched }) {
   }
 
   return (
-    <section className="min-w-0 rounded-lg border border-zinc-200 bg-white shadow-sm">
-      <div className="border-b border-zinc-200 p-4">
+    <section className="min-w-0 overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
+      <div className="border-b border-zinc-200 p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-teal-700">Create Your Token</p>
-            <h2 className="mt-1 text-2xl font-semibold text-zinc-950">Token Details</h2>
+            <p className="text-sm font-semibold text-indigo-700">Create Your Token</p>
+            <h2 className="mt-1 text-2xl font-semibold text-zinc-900">Token Details</h2>
+            <p className="mt-2 text-sm leading-6 text-zinc-600">
+              Enter the core token metadata and confirm the launch transaction.
+            </p>
           </div>
-          <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-semibold text-amber-900">
+          <div className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-700">
             {creationFeeEth} ETH
           </div>
         </div>
       </div>
 
-      <form className="grid gap-3 p-4" onSubmit={launchToken}>
+      <form className="grid gap-3 p-5" onSubmit={launchToken}>
         <label className="grid min-w-0 gap-2 text-sm font-medium text-zinc-700">
           Token name
           <input
@@ -101,7 +104,7 @@ export default function LaunchForm({ account, setAccount, onTokenLaunched }) {
             onChange={updateField}
             required
             placeholder="My Community Token"
-            className="min-h-11 w-full min-w-0 rounded-md border border-zinc-300 bg-white px-3 text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-teal-600 focus:ring-4 focus:ring-teal-100"
+            className="min-h-11 w-full min-w-0 rounded-md border border-zinc-300 bg-white px-3 text-zinc-900 outline-none transition placeholder:text-zinc-500 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100"
           />
         </label>
 
@@ -115,7 +118,7 @@ export default function LaunchForm({ account, setAccount, onTokenLaunched }) {
               required
               maxLength={12}
               placeholder="ACME"
-              className="min-h-11 w-full min-w-0 rounded-md border border-zinc-300 bg-white px-3 uppercase text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-teal-600 focus:ring-4 focus:ring-teal-100"
+              className="min-h-11 w-full min-w-0 rounded-md border border-zinc-300 bg-white px-3 uppercase text-zinc-900 outline-none transition placeholder:text-zinc-500 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100"
             />
           </label>
 
@@ -130,7 +133,7 @@ export default function LaunchForm({ account, setAccount, onTokenLaunched }) {
               step="any"
               inputMode="decimal"
               placeholder="1000000"
-              className="min-h-11 w-full min-w-0 rounded-md border border-zinc-300 bg-white px-3 text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-teal-600 focus:ring-4 focus:ring-teal-100"
+              className="min-h-11 w-full min-w-0 rounded-md border border-zinc-300 bg-white px-3 text-zinc-900 outline-none transition placeholder:text-zinc-500 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100"
             />
           </label>
         </div>
@@ -138,25 +141,25 @@ export default function LaunchForm({ account, setAccount, onTokenLaunched }) {
         <div className="border-y border-zinc-200 py-3 text-sm text-zinc-600">
           <div className="flex items-center justify-between gap-3">
             <span>Launch cost</span>
-            <span className="font-semibold text-zinc-950">{creationFeeEth} ETH</span>
+            <span className="font-semibold text-zinc-900">{creationFeeEth} ETH</span>
           </div>
           <div className="mt-2 flex items-center justify-between gap-3">
             <span>Number precision</span>
-            <span className="font-semibold text-zinc-950">18</span>
+            <span className="font-semibold text-zinc-900">18</span>
           </div>
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="min-h-11 rounded-md bg-teal-700 px-4 font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-70"
+          className="min-h-11 rounded-md bg-indigo-600 px-4 font-semibold text-white shadow-glow transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isSubmitting ? "Creating..." : "Create Token"}
         </button>
       </form>
 
       {status.message ? (
-        <div className="px-4 pb-4">
+        <div className="px-5 pb-5">
           <div
             className={`rounded-md border px-4 py-3 text-sm ${
               status.type === "error"
@@ -169,7 +172,7 @@ export default function LaunchForm({ account, setAccount, onTokenLaunched }) {
             <p>{status.message}</p>
             {txHash ? (
               <a
-                className="mt-2 inline-flex break-all font-medium text-teal-700 underline-offset-4 hover:underline"
+                className="mt-2 inline-flex break-all font-medium text-indigo-700 underline-offset-4 hover:underline"
                 href={explorerTxUrl(txHash) || "#"}
                 target={explorerTxUrl(txHash) ? "_blank" : undefined}
                 rel="noreferrer"

@@ -1,6 +1,8 @@
-# ERC20 Token Launchpad
+# TokenForge ERC20 Launchpad
 
 A modern ERC20 launchpad dApp with a Foundry smart-contract backend and a Next.js App Router frontend. Users connect an injected wallet, pay a fixed `0.01 ETH` creation fee, create an ERC20 token clone, and browse every token launched through the factory.
+
+The current frontend brand is **TokenForge Launchpad**. It includes a custom SVG favicon, navbar logo, compact wallet dropdown, token address copy action, and token verification link action.
 
 ## Technical Overview
 
@@ -9,6 +11,20 @@ A modern ERC20 launchpad dApp with a Foundry smart-contract backend and a Next.j
 - The frontend uses Next.js App Router with JavaScript and Tailwind CSS.
 - All on-chain reads and writes are handled with raw `viem` clients. The app does not use `ethers.js`, wagmi hooks, or wagmi UI components.
 - `utils/viemClient.js` creates a reusable HTTP `publicClient`, creates browser wallet clients from `window.ethereum`, and decodes factory custom errors from revert data.
+- `components/Navbar.js` manages injected-wallet connection state, shows the connected account as a compact pill, and exposes a dropdown with active network, native balance, and disconnect.
+- `components/TokenGrid.js` shows the two newest tokens by default, provides a `View all` toggle, and includes copy plus verification actions for each token address.
+- `public/favicon.svg` and `public/tokenforge-logo.svg` provide the app favicon and navbar logo.
+
+## Frontend Features
+
+- Light dashboard layout with darker heading and paragraph contrast.
+- Token creator form with a fixed launch fee display.
+- Compact wallet connect button with wallet icon.
+- Connected wallet dropdown showing network, balance, and disconnect.
+- Token list that defaults to two visible items and expands with `View all`.
+- Token address row with copy and verify-link icons.
+- Custom TokenForge favicon and navbar logo.
+- Next.js dev indicator portal is hidden so development issue badges do not cover the app UI.
 
 ## Prerequisites
 
@@ -40,7 +56,7 @@ NEXT_PUBLIC_CHAIN_NAME=Local Anvil
 NEXT_PUBLIC_EXPLORER_URL=
 ```
 
-`NEXT_PUBLIC_EXPLORER_URL` is optional. When set, transaction hashes and token addresses link to that explorer.
+`NEXT_PUBLIC_EXPLORER_URL` is optional. When set, transaction hashes, token addresses, and token verification icons link to that explorer.
 
 Copy the Foundry deploy template when broadcasting scripts:
 
@@ -123,15 +139,20 @@ components/
   LaunchForm.js
   Navbar.js
   TokenGrid.js
+public/
+  favicon.svg
+  tokenforge-logo.svg
 utils/
   contracts.js
   viemClient.js
+next.config.js
 ```
 
 ## Notes for Production
 
 - Replace the local RPC and chain settings with your target network values.
 - Fund the deployer wallet before broadcasting to a public network.
-- Verify the factory contract on your target block explorer after deployment.
+- Verify the factory and launched token contracts on your target block explorer after deployment.
+- Set `NEXT_PUBLIC_EXPLORER_URL` for production so address links and verification icons point users to the correct explorer.
 - Keep `PRIVATE_KEY` out of source control. The `.gitignore` excludes `.env` and `.env.local`.
 - Consider adding fee governance, token creation limits, and indexed off-chain analytics for high-traffic deployments.
