@@ -18,9 +18,9 @@ export default function Home() {
         <section className="mb-5 overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
           <div className="border-b border-zinc-200 px-5 py-5">
             <p className="text-sm font-semibold text-indigo-700">Token Creator</p>
-            <h2 className="mt-1 text-2xl font-semibold leading-tight text-zinc-900">
-              Create your own token in a few steps.
-            </h2>
+            <h1 className="mt-1 text-2xl font-semibold leading-tight text-zinc-900">
+              Create ERC20 tokens on Polygon Amoy in a few steps.
+            </h1>
             <p className="mt-2 text-sm leading-6 text-zinc-600">
               Set the name, symbol, and starting supply, then launch it from your connected wallet.
             </p>

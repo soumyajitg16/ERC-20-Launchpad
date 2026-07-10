@@ -106,7 +106,8 @@ export function parseViemError(error) {
         EmptyName: "Token name is required.",
         EmptySymbol: "Token symbol is required.",
         InvalidSupply: "Initial supply must be greater than zero.",
-        FeeWithdrawalFailed: "The fee transfer failed."
+        FeeWithdrawalFailed: "The fee transfer failed.",
+        OwnableUnauthorizedAccount: "Only the launchpad owner can redeem creation fees."
       };
 
       return messages[decoded.errorName] || decoded.errorName;
