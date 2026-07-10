@@ -112,7 +112,7 @@ In another terminal, deploy the factory using one of Anvil's funded private keys
 
 ```bash
 cd contracts
-forge script script/Deploy.s.sol:Deploy \
+forge script script/Deploy.s.sol \
   --rpc-url http://127.0.0.1:8545 \
   --broadcast
 ```
@@ -121,11 +121,9 @@ Copy the deployed `TokenLaunchpad` address into `.env.local` as `NEXT_PUBLIC_FAC
 
 ## Polygon Amoy and Vercel Deployment
 
-For the full online deployment flow, see [`DEPLOYMENT.md`](DEPLOYMENT.md). The short version is:
-
 ```bash
 cd contracts
-forge script script/Deploy.s.sol:Deploy --rpc-url amoy --broadcast -vvvv
+forge script script/Deploy.s.sol --rpc-url amoy --broadcast -vvvv
 ```
 
 Copy the deployed `TokenLaunchpad` address from Foundry's `broadcast/Deploy.s.sol/80002/run-latest.json`, set it as `NEXT_PUBLIC_FACTORY_ADDRESS` in Vercel, and deploy the root Next.js app with the default Vercel Next.js settings.
@@ -178,7 +176,7 @@ next.config.js
 
 - Use Polygon Amoy values for the testnet deployment, or replace the RPC, chain, explorer, and native currency settings if you move to another network.
 - Fund the deployer wallet before broadcasting to a public network.
-- Verify the factory and launched token contracts on your target block explorer after deployment.
+- Verify the factory and launch token contracts on your target block explorer after deployment.
 - Set `NEXT_PUBLIC_EXPLORER_URL` for production so address links and verification icons point users to the correct explorer.
 - Set `NEXT_PUBLIC_SITE_URL` in Vercel so SEO metadata, canonical URLs, sitemap URLs, and social image URLs use the production domain.
 - Keep `PRIVATE_KEY` out of source control. The `.gitignore` excludes `.env` and `.env.local`.
