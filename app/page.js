@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Footer from "../components/Footer";
 import LaunchForm from "../components/LaunchForm";
 import Navbar from "../components/Navbar";
 import TokenGrid from "../components/TokenGrid";
@@ -54,6 +55,8 @@ export default function Home() {
           />
           <TokenGrid refreshKey={refreshKey} />
         </div>
+
+        <Footer />
       </div>
     </main>
   );

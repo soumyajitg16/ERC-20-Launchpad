@@ -10,5 +10,4 @@ coverage/
 coverage.json
 lcov.info
 .DS_Store
-reports/
 .agents/
